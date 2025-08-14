@@ -1,0 +1,28 @@
+{
+  "name": "roti-shoti",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mdi/js": "^7.4.47",
+    "@mui/icons-material": "^7.3.1",
+    "@mui/material": "^7.3.1",
+    "mdi-vue": "^3.0.13",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@iconify-json/fa6-brands": "^1.2.6",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "unplugin-icons": "^22.2.0",
+    "unplugin-vue-components": "^29.0.0",
+    "vite": "^7.0.4"
+  }
+}
