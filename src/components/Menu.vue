@@ -15,10 +15,9 @@
       </div>
     </div>
   </div>
-<div class="order-btn-wrapper">
-  <a href="#order-section" class="order-link">Place Your Order</a>
-</div>
-  <Order />
+  <div class="order-btn-wrapper">
+    <router-link to="/order" class="order-link">Place Your Order</router-link>
+  </div>
 </template>
 
 <script>
@@ -173,13 +172,14 @@ li:last-child {
   font-weight: 100;
   font-family: 'Russo One', sans-serif;
 }
+
 .order-btn-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
 
-a {
+.order-link {
   text-decoration: none;
   color: #FAF4E5;
   background-color: #0A3E36;
@@ -192,9 +192,10 @@ a {
   justify-content: center;
   align-items: center;
   width: 150px;
+  margin-bottom: 40px;
 }
 
-a:hover {
+.order-link:hover {
   background-color: #FAF4E5;
   color: #0A3E36;
   border: 2px solid #0A3E36;

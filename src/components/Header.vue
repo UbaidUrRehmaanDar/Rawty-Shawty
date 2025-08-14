@@ -4,7 +4,7 @@
       <img src="/rawty-shawty-2.png" alt="My Website" />
     </div>
     <nav>
-      <a href="#">menu</a>
+      <a href="#" @click.prevent="$emit('openMenu')">menu</a>
       <a href="#">about</a>
       <a href="#">contact</a>
       <a href="#">facebook</a>

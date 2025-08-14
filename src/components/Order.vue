@@ -1,7 +1,12 @@
 <template>
   <div class="order-container">
     <div class="order-section">
-      <h1>Place Your Order</h1>
+      <div class="header-section">
+        <router-link to="/" class="back-button">
+          ← Back to Menu
+        </router-link>
+        <h1>Place Your Order</h1>
+      </div>
       <div class="menu-grid">
         <div class="menu-card" v-for="(section, i) in menuData" :key="i">
           <div class="menu-card-header">
@@ -151,14 +156,45 @@ export default {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 40px;
+  align-items: start;
+}
+
+.header-section {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  color: #FAF4E5;
+  background-color: #0A3E36;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 2px solid #FAF4E5;
+  font-family: 'Russo One', sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-button:hover {
+  background-color: #FAF4E5;
+  color: #0A3E36;
+  border: 2px solid #0A3E36;
 }
 
 .order-section h1 {
   font-family: 'Zen Dots', sans-serif;
   color: #0A3E36;
-  margin-bottom: 40px;
   font-size: 36px;
   text-align: center;
+  margin: 0;
 }
 
 .menu-grid {
@@ -238,8 +274,10 @@ button:hover {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(10, 62, 54, 0.8);
-  align-self: start;
-  /* Makes it stick to the top */
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  margin-top: 0; 
 }
 
 .cart-section h2 {
@@ -247,6 +285,7 @@ button:hover {
   color: #FAF4E5;
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 0;
 }
 
 .cart-section li span {
@@ -286,5 +325,22 @@ button:hover {
   font-family: 'Russo One', sans-serif;
   font-size: 20px;
   color: #FAF4E5;
+}
+
+@media (max-width: 768px) {
+  .header-section {
+    text-align: center;
+  }
+  
+  .back-button {
+    position: static;
+    transform: none;
+    display: inline-flex;
+    margin-bottom: 20px;
+  }
+  
+  .order-section h1 {
+    font-size: 28px;
+  }
 }
 </style>

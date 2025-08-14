@@ -1,23 +1,19 @@
 <template>
   <Header />
-  <Cards />
-  <Menu />
-  <router-view />
+  
+  <main>
+    <router-view /> 
+  </main>
+  
   <Footer />
 </template>
 
 <script>
-import Cards from './components/Cards.vue';
-import Menu from './components/Menu.vue';
-import Order from './components/Order.vue';
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   components: {
-    Cards,
-    Menu,
-    Order,
     Header,
     Footer
   }
@@ -31,5 +27,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #FAF4E5;
+}
+
+main {
+  padding: 20px;
 }
 </style>
