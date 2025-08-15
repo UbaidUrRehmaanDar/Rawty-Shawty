@@ -1,10 +1,10 @@
 <template>
   <Header />
-  
+
   <main>
-    <router-view /> 
+    <router-view />
   </main>
-  
+  <About />
   <Footer />
 </template>
 
@@ -31,5 +31,32 @@ body {
 
 main {
   padding: 20px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&family=Zen+Dots&display=swap');
+
+h1 {
+  font-family: 'Zen Dots', sans-serif;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: 'Unbounded', sans-serif;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 550;
+}
+
+a,
+button {
+  text-decoration: none;
+  font-family: 'Russo One', sans-serif;
+  text-transform: uppercase;
 }
 </style>

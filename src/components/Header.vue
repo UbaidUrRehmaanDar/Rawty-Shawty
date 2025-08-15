@@ -5,7 +5,7 @@
     </div>
     <nav>
       <a href="#" @click.prevent="$emit('openMenu')">menu</a>
-      <a href="#">about</a>
+      <router-link to="/about" >About</router-link>
       <a href="#">contact</a>
       <a href="#">facebook</a>
       <a href="#">twitter</a>
@@ -20,22 +20,20 @@
 header {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   padding: 0 15px;
   background-color: #0A3E36;
 }
 
 .logo img {
-  height: 120px; 
+  height: 120px;
   width: auto;
 }
 
 nav {
   display: flex;
   gap: 12px;
-  font-family: 'Russo One', sans-serif;
   letter-spacing: 1px;
-  text-transform: uppercase;
 }
 
 nav a {

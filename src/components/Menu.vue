@@ -191,7 +191,6 @@ li:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
   margin-bottom: 40px;
 }
 
