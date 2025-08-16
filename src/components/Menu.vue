@@ -1,6 +1,6 @@
 <template>
   <div id="menu-section" class="menu-wrapper">
-    <h1 class="menu-title">RAWTY SHAWTY MENU</h1>
+    <h1 class="menu-title marching-ants">RAWTY SHAWTY MENU</h1>
     <div class="menu-grid">
       <div class="menu-card" v-for="(section, i) in menuData" :key="i">
         <div class="menu-card-header">
@@ -117,12 +117,21 @@ export default {
   text-align: center;
   font-family: 'Zen Dots', sans-serif;
   color: #FAF4E5;
-  background: #0A3E36;
+  background: linear-gradient(90deg, #0A3E36, #1B5E50, #0A3E36);
+  background-size: 200% 100%;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 30px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-position 0.5s ease, color 0.3s ease;
 }
+
+.menu-title:hover {
+  transform: scale(1.05);
+  color: #fcedcf;
+  background-position: 100% 0;
+}
+
 
 .menu-grid {
   display: grid;
@@ -133,9 +142,17 @@ export default {
 .menu-card {
   background: rgba(10, 62, 54, 0.9);
   color: #FAF4E5;
+  background-size: 200% 100%;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-position 0.5s ease, color 0.3s ease;
+}
+
+.menu-card:hover {
+  background-position: 100% 0;
+  color: #fcedcf;
+  transform: scale(1.05);
 }
 
 .menu-card-header {
@@ -162,6 +179,7 @@ li {
   font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
 }
 
 li:last-child {

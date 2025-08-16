@@ -158,7 +158,6 @@
     opacity: 0.8;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;

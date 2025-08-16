@@ -1,4 +1,4 @@
-  <template>
+<template>
     <Header />
 
     <main>
@@ -139,4 +139,5 @@
       transition: none;
     }
   }
+  
   </style>

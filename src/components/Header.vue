@@ -1,8 +1,10 @@
 <template>
   <header>
     <div class="logo">
-      <router-link to="/" aria-label="Home">
-        <img src="/rawty-shawty-2.png" alt="Rawty Shawty Home" />
+      <router-link to="/" aria-label="Home" class="logo-link">
+        <img src="/rawty-shawty-2.png" alt="Rawty Shawty Home" class="logo-background" />
+        <img src="/rawty-shawty-text.png" alt="Rawty Shawty Text" class="logo-text" />
+        <div class="green-background"></div>
       </router-link>
     </div>
     <nav>
@@ -85,15 +87,64 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  overflow: visible; /* Allow the text to overflow when it pops out */
 }
 
-.logo a {
+.logo {
+  position: relative;
+  z-index: 1001;
+}
+
+.logo-link {
   display: inline-block;
+  position: relative;
 }
 
-.logo img {
+.logo-background {
   height: 84px;
   width: auto;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.green-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0A3E36;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 4px; /* Optional: add slight rounding */
+}
+
+.logo-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 84px;
+  width: auto;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 0 0px transparent);
+  z-index: 2;
+}
+
+/* Hover effects */
+.logo-link:hover .logo-background {
+  opacity: 0;
+}
+
+.logo-link:hover .green-background {
+  opacity: 1;
+}
+
+.logo-link:hover .logo-text {
+  transform: translateY(-12px) scale(1.08);
+  filter: drop-shadow(0 10px 25px rgba(250, 244, 229, 0.6))
+          drop-shadow(0 0 20px rgba(250, 244, 229, 0.8))
+          drop-shadow(0 0 40px rgba(250, 244, 229, 0.4))
+          drop-shadow(0 0 60px rgba(250, 244, 229, 0.2));
 }
 
 nav {

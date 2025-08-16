@@ -278,10 +278,19 @@ button:hover {
   top: 20px;
   height: fit-content;
   margin-top: 0;
+  background: linear-gradient(90deg, #0A3E36, #1B5E50, #0A3E36);
+  background-size: 200% 100%;
+  transition: transform 0.3s ease, background-position 0.5s ease, color 0.3s ease;
+}
+
+.cart-section:hover {
+  background-position: 100% 0;
+  color: #fcedcf;
+  transform: scale(1.05);
 }
 
 .cart-section h2 {
-  font-family: 'Zen Dots', sans-serif;
+  font-family: 'Zen Dots', sans-serif; 
   color: #FAF4E5;
   text-align: center;
   margin-bottom: 20px;
@@ -293,7 +302,7 @@ button:hover {
 }
 
 .cart-empty {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Zen Dots', sans-serif; 
   color: #f5e8c9;
   text-align: center;
   padding: 20px 0;

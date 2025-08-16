@@ -3,6 +3,11 @@
         <button id="prev" @click="prevDeal">
             <span class="material-icons">arrow_left</span>
         </button>
+        
+        <div style="display: none;">
+            <img v-for="deal in deals" :key="deal.image" :src="deal.image" alt="preload">
+        </div>
+        
         <div class="cards" v-for="(deal, i) in deals" :key="i" v-show="index === i"
             :style="{ backgroundImage: `url(${deal.image})` }">
             <div class="overlay">
@@ -28,14 +33,14 @@ export default {
         return {
             index: 0,
             deals: [
-                { heading: "Cheesy Pizza", description: "Baked to perfection with a golden crust and melty mozzarella.", button: "Order Now", image: "/pizza.jpg" },
-                { heading: "Loaded Pizza", description: "Packed with extra toppings for an irresistible bite.", button: "Order Now", image: "/pizza-2.jpg" },
-                { heading: "Classic Burger", description: "Juicy patty, fresh lettuce, and our signature sauce.", button: "Grab Deal", image: "/borgir.jpg" },
-                { heading: "Double Burger", description: "Twice the meat, twice the flavor — for true burger lovers.", button: "Grab Deal", image: "/borgir-2.jpg" },
-                { heading: "Shawarma Wrap", description: "Tender spiced meat wrapped in warm pita bread.", button: "Order Today", image: "/shawarma.jpg" },
-                { heading: "Chow Mein", description: "Stir-fried noodles with fresh vegetables and bold flavors.", button: "Try Now", image: "/chowmein.jpg" },
-                { heading: "Chicken Karahi", description: "Rich and spicy curry cooked in traditional style.", button: "Order Now", image: "/karrahi.jpg" },
-                { heading: "Creamy Pasta", description: "Silky sauce coating perfectly cooked pasta.", button: "Try Now", image: "/pasta.jpg" }
+                { heading: "Cheesy Pizza", description: "Baked to perfection with a golden crust and melty mozzarella.", button: "Order Now", image: "/pizza.webp" },
+                { heading: "Loaded Pizza", description: "Packed with extra toppings for an irresistible bite.", button: "Order Now", image: "/pizza-2.webp" },
+                { heading: "Classic Burger", description: "Juicy patty, fresh lettuce, and our signature sauce.", button: "Grab Deal", image: "/borgir.webp" },
+                { heading: "Double Burger", description: "Twice the meat, twice the flavor — for true burger lovers.", button: "Grab Deal", image: "/borgir-2.webp" },
+                { heading: "Shawarma Wrap", description: "Tender spiced meat wrapped in warm pita bread.", button: "Order Today", image: "/shawarma.webp" },
+                { heading: "Chow Mein", description: "Stir-fried noodles with fresh vegetables and bold flavors.", button: "Try Now", image: "/chowmein.webp" },
+                { heading: "Chicken Karahi", description: "Rich and spicy curry cooked in traditional style.", button: "Order Now", image: "/karrahi.webp" },
+                { heading: "Creamy Pasta", description: "Silky sauce coating perfectly cooked pasta.", button: "Try Now", image: "/pasta.webp" }
             ]
         }
     },
@@ -45,12 +50,23 @@ export default {
         },
         prevDeal() {
             this.index = (this.index === 0) ? this.deals.length - 1 : this.index - 1
+        },
+        preloadImages() {
+            this.deals.forEach(deal => {
+                const link = document.createElement('link')
+                link.rel = 'preload'
+                link.as = 'image'
+                link.href = deal.image
+                document.head.appendChild(link)
+            })
         }
     },
     mounted() {
+        this.preloadImages()
+        
         setInterval(() => {
             this.index = (this.index + 1) % this.deals.length
-        }, 7000);
+        }, 7000)
     }
 };
 </script>
@@ -113,20 +129,20 @@ button:hover {
     border: 2px solid #FAF4E5;
 }
 
- a {
-  text-decoration: none;
-  color: #0A3E36;
-  background-color: #FAF4E5;
-  padding: 9px 15px;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+a {
+    text-decoration: none;
+    color: #0A3E36;
+    background-color: #FAF4E5;
+    padding: 9px 15px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
- a:hover {
-  background-color: #0A3E36;
-  color: #FAF4E5;
-  border: 2px solid #FAF4E5;
+a:hover {
+    background-color: #0A3E36;
+    color: #FAF4E5;
+    border: 2px solid #FAF4E5;
 }
 
 .dots {
