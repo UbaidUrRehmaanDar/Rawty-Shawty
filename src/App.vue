@@ -2,8 +2,15 @@
   <Header />
 
   <main>
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <Transition name="fade" appear>
+        <div class="route-wrap" :key="$route.fullPath">
+          <component :is="Component" />
+        </div>
+      </Transition>
+    </router-view>
   </main>
+
   <Footer />
 </template>
 
@@ -22,7 +29,6 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Russo+One&family=Zen+Dots&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&family=Zen+Dots&display=swap');
-
 
 ::-webkit-scrollbar {
   width: 18px;
@@ -47,11 +53,14 @@ export default {
   transform: scale(1.1);
 }
 
-::-webkit-scrollbar-button { display: none; }
+::-webkit-scrollbar-button {
+  display: none;
+}
 
-html, * { 
-  scroll-behavior: smooth; 
-  -webkit-overflow-scrolling: touch; 
+html,
+* {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 html {
@@ -90,5 +99,44 @@ button {
   text-decoration: none;
   font-family: 'Russo One', sans-serif;
   text-transform: uppercase;
+}
+
+.route-wrap {
+  min-height: 1px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.fade-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: none;
+  }
 }
 </style>
