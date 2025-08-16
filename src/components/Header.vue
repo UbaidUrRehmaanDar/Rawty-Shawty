@@ -1,9 +1,12 @@
 <template>
   <header>
     <div class="logo">
-      <img src="/rawty-shawty-2.png" alt="My Website" />
+      <router-link to="/" aria-label="Home">
+        <img src="/rawty-shawty-2.png" alt="Rawty Shawty Home" />
+      </router-link>
     </div>
     <nav>
+      <router-link to="/" exact>Home</router-link>
       <a href="#" @click.prevent="scrollToMenu">menu</a>
       <router-link to="/about">About</router-link>
       <router-link to="/contact">contact</router-link>
@@ -20,7 +23,7 @@ const router = useRouter()
 
 const scrollToMenu = () => {
   if (window.location.pathname === '/') {
-    
+
     setTimeout(() => {
       const menuSection = document.getElementById('menu-section')
       if (menuSection) {
@@ -29,7 +32,7 @@ const scrollToMenu = () => {
           block: 'start'
         })
       }
-    }, 100) 
+    }, 100)
   } else {
     router.push('/').then(() => {
       setTimeout(() => {
@@ -40,7 +43,7 @@ const scrollToMenu = () => {
             block: 'start'
           })
         }
-      }, 300) 
+      }, 300)
     })
   }
 }
@@ -58,8 +61,12 @@ header {
   z-index: 1000;
 }
 
+.logo a {
+  display: inline-block;
+}
+
 .logo img {
-  height: 120px;
+  height: 84px;
   width: auto;
 }
 
@@ -73,7 +80,7 @@ nav a {
   text-decoration: none;
   color: #0A3E36;
   background-color: #FAF4E5;
-  padding: 9px 15px;
+  padding: 8px 14px;         
   border-radius: 8px;
   border: 2px solid transparent;
   transition: all 0.3s ease;

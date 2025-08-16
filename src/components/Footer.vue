@@ -22,7 +22,7 @@
             <div class="footer-links">
                 <div class="link-column">
                     <h4>Our Company</h4>
-                    <a href="#">About Us</a>
+                    <router-link to="/about">About</router-link>
                     <a href="#">Our Journey</a>
                 </div>
 
@@ -35,12 +35,13 @@
 
                 <div class="link-column">
                     <h4>Contact Us</h4>
+                    <router-link to="/contact">contact</router-link>
                     <a href="#">Suggestion</a>
                     <a href="#">Complaint</a>
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2025 Rawty Shawty. All rights reserved.</p>
         </div>
@@ -163,11 +164,11 @@
         flex-direction: column;
         gap: 30px;
     }
-    
+
     .footer-links {
         gap: 30px;
     }
-    
+
     .link-column {
         min-width: 120px;
     }
