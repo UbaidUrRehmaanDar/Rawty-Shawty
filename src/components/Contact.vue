@@ -45,7 +45,7 @@
   gap: 20px;
   font-family: 'Inter', sans-serif;
   flex-wrap: wrap;
-  padding: 40px;
+  padding: 70px;
   margin-top: 30px;
 }
 
@@ -112,7 +112,7 @@ h3 {
 }
 
 .material-icons {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 @media (max-width: 768px) {

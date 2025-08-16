@@ -55,7 +55,7 @@
 .container {
   display: flex;
   gap: 20px;
-  padding: 40px;
+  padding: 70px;
   margin-top: 30px;
 }
 
