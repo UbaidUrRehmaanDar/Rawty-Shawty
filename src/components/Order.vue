@@ -3,7 +3,7 @@
     <div class="order-section">
       <div class="header-section">
         <router-link to="/" class="back-button">
-          ← Back to Menu
+          <span class="material-icons">arrow_back</span>
         </router-link>
         <h1>Place Your Order</h1>
       </div>
@@ -277,7 +277,7 @@ button:hover {
   position: sticky;
   top: 20px;
   height: fit-content;
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 .cart-section h2 {
@@ -331,14 +331,18 @@ button:hover {
   .header-section {
     text-align: center;
   }
-  
+
   .back-button {
     position: static;
     transform: none;
     display: inline-flex;
     margin-bottom: 20px;
   }
-  
+
+  .material-icons {
+    font-size: 48px;
+  }
+
   .order-section h1 {
     font-size: 28px;
   }

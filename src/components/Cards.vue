@@ -1,22 +1,23 @@
 <template>
     <div class="slider">
         <button id="prev" @click="prevDeal">
-            <span class="material-icons">chevron_left</span>
+            <span class="material-icons">arrow_left</span>
         </button>
         <div class="cards" v-for="(deal, i) in deals" :key="i" v-show="index === i"
             :style="{ backgroundImage: `url(${deal.image})` }">
             <div class="overlay">
                 <h2>{{ deal.heading }}</h2>
                 <p>{{ deal.description }}</p>
-                <button>{{ deal.button }}</button>
+
+                <router-link to="/order" class="order-link">{{ deal.button }}</router-link>
             </div>
         </div>
-        <button id="next" @click="nextDeal"> <span class="material-icons">chevron_right</span>
+        <button id="next" @click="nextDeal">
+            <span class="material-icons">arrow_right</span>
         </button>
 
         <div class="dots">
-            <span v-for="(deal, i) in deals" :key="i" :class="{ active: index === i }" @click="index = i">
-            </span>
+            <span v-for="(deal, i) in deals" :key="i" :class="{ active: index === i }" @click="index = i"></span>
         </div>
     </div>
 </template>
@@ -27,54 +28,14 @@ export default {
         return {
             index: 0,
             deals: [
-                {
-                    heading: "Cheesy Pizza",
-                    description: "Baked to perfection with a golden crust and melty mozzarella.",
-                    button: "Order Now",
-                    image: "/pizza.jpg"
-                },
-                {
-                    heading: "Loaded Pizza",
-                    description: "Packed with extra toppings for an irresistible bite.",
-                    button: "Order Now",
-                    image: "/pizza-2.jpg"
-                },
-                {
-                    heading: "Classic Burger",
-                    description: "Juicy patty, fresh lettuce, and our signature sauce.",
-                    button: "Grab Deal",
-                    image: "/borgir.jpg"
-                },
-                {
-                    heading: "Double Burger",
-                    description: "Twice the meat, twice the flavor — for true burger lovers.",
-                    button: "Grab Deal",
-                    image: "/borgir-2.jpg"
-                },
-                {
-                    heading: "Shawarma Wrap",
-                    description: "Tender spiced meat wrapped in warm pita bread.",
-                    button: "Order Today",
-                    image: "/shawarma.jpg"
-                },
-                {
-                    heading: "Chow Mein",
-                    description: "Stir-fried noodles with fresh vegetables and bold flavors.",
-                    button: "Try Now",
-                    image: "/chowmein.jpg"
-                },
-                {
-                    heading: "Chicken Karahi",
-                    description: "Rich and spicy curry cooked in traditional style.",
-                    button: "Order Now",
-                    image: "/karrahi.jpg"
-                },
-                {
-                    heading: "Creamy Pasta",
-                    description: "Silky sauce coating perfectly cooked pasta.",
-                    button: "Try Now",
-                    image: "/pasta.jpg"
-                }
+                { heading: "Cheesy Pizza", description: "Baked to perfection with a golden crust and melty mozzarella.", button: "Order Now", image: "/pizza.jpg" },
+                { heading: "Loaded Pizza", description: "Packed with extra toppings for an irresistible bite.", button: "Order Now", image: "/pizza-2.jpg" },
+                { heading: "Classic Burger", description: "Juicy patty, fresh lettuce, and our signature sauce.", button: "Grab Deal", image: "/borgir.jpg" },
+                { heading: "Double Burger", description: "Twice the meat, twice the flavor — for true burger lovers.", button: "Grab Deal", image: "/borgir-2.jpg" },
+                { heading: "Shawarma Wrap", description: "Tender spiced meat wrapped in warm pita bread.", button: "Order Today", image: "/shawarma.jpg" },
+                { heading: "Chow Mein", description: "Stir-fried noodles with fresh vegetables and bold flavors.", button: "Try Now", image: "/chowmein.jpg" },
+                { heading: "Chicken Karahi", description: "Rich and spicy curry cooked in traditional style.", button: "Order Now", image: "/karrahi.jpg" },
+                { heading: "Creamy Pasta", description: "Silky sauce coating perfectly cooked pasta.", button: "Try Now", image: "/pasta.jpg" }
             ]
         }
     },
@@ -82,13 +43,8 @@ export default {
         nextDeal() {
             this.index = (this.index + 1) % this.deals.length
         },
-
         prevDeal() {
-            if (this.index === 0) {
-                this.index = this.deals.length - 1
-            } else {
-                this.index--
-            }
+            this.index = (this.index === 0) ? this.deals.length - 1 : this.index - 1
         }
     },
     mounted() {
@@ -112,13 +68,10 @@ export default {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    height: 350px;
+    height: 500px;
     display: flex;
     align-items: flex-end;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    height: 500px;
-    background-size: cover;
     background-position: center;
 }
 
@@ -160,6 +113,22 @@ button:hover {
     border: 2px solid #FAF4E5;
 }
 
+ a {
+  text-decoration: none;
+  color: #0A3E36;
+  background-color: #FAF4E5;
+  padding: 9px 15px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+ a:hover {
+  background-color: #0A3E36;
+  color: #FAF4E5;
+  border: 2px solid #FAF4E5;
+}
+
 .dots {
     margin-top: 15px;
     text-align: center;
@@ -188,16 +157,12 @@ button:hover {
     background: #0A3E36;
     border: none;
     color: #FAF4E5;
-    font-size: 30px;
     cursor: pointer;
     border-radius: 20%;
-    width: 75px;
-    height: 55px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease, transform 0.2s ease;
-    z-index: 10;
+    padding: 8px;
 }
 
 #prev:hover,
@@ -208,10 +173,15 @@ button:hover {
 }
 
 #prev {
-    left: -80px;
+    left: -60px;
 }
 
 #next {
-    right: -80px;
+    right: -60px;
+}
+
+#prev .material-icons,
+#next .material-icons {
+    font-size: 32px;
 }
 </style>

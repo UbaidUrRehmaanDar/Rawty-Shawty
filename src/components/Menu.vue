@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-wrapper">
+  <div id="menu-section" class="menu-wrapper">
     <h1 class="menu-title">RAWTY SHAWTY MENU</h1>
     <div class="menu-grid">
       <div class="menu-card" v-for="(section, i) in menuData" :key="i">
